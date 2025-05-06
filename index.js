@@ -35,6 +35,11 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
+app.get("/api/hello", (req, res) => {
+  res.send("Hello from the updated backend API!");
+});
+
+
 // database connection
 mongoose.set("strictQuery", false);
 const connect = async () => {
