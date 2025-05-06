@@ -21,7 +21,6 @@ const { Admin } = require("./models/Admin");
 const router = require("./routes/router");
 const router1 = require("./routes/router1");
 require("dotenv").config();
-MONGO_URI = 'mongodb+srv://<username>:<password>@<cluster>.mongodb.net/tour?retryWrites=true&w=majority'
 
 const app = express();
 const port = process.env.PORT || 4000;
