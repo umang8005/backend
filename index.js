@@ -23,23 +23,37 @@ const router1 = require("./routes/router1");
 require("dotenv").config();
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
+// const port = 4000;
 const corsOptions = {
   origin: true,
   credentials: true,
 };
 
+
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 // database connection
 mongoose.set("strictQuery", false);
 const connect = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://arpitkhunt83:IuG9UwGX3CgHPoiM@cluster0.vumwd9c.mongodb.net/tour",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    
+    
+    
+    // await mongoose.connect(
+    //   "mongodb+srv://arpitkhunt83:IuG9UwGX3CgHPoiM@cluster0.vumwd9c.mongodb.net/tour",
+    //   {
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    //   }
+    // );
 
     console.log("MongoDB database connected");
   } catch (err) {
