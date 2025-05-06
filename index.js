@@ -21,6 +21,7 @@ const { Admin } = require("./models/Admin");
 const router = require("./routes/router");
 const router1 = require("./routes/router1");
 require("dotenv").config();
+MONGO_URI = 'mongodb+srv://<username>:<password>@<cluster>.mongodb.net/tour?retryWrites=true&w=majority'
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -75,6 +76,8 @@ app.use("/api/v1/contacts", contactRoute);
 app.use("/api/v1/admins", adminRoute);
 app.use(router);
 app.use(router1);
+
+require("dotenv").config();
 
 // for admin panel
 app.get("/users", async (req, res) => {
@@ -221,3 +224,5 @@ app.listen(port, () => {
   connect();
   console.log("server listening on port", port);
 });
+
+console.log("Mongo URI:", process.env.MONGO_URI);
